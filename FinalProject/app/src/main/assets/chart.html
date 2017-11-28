@@ -1,0 +1,41 @@
+<html>
+<head>
+    <script type="text/javascript" src="smoothie.js"></script>
+    <script type="text/javascript">
+      var data = 0;
+
+      function setData(value)
+      {
+        data = value;
+      }
+
+      // Randomly add a data point every 500ms
+      var random = new TimeSeries();
+      setInterval(function() {
+        random.append(new Date().getTime(), data);
+      }, 300);
+
+      function createTimeline() {
+        var chart = new SmoothieChart();
+        chart.addTimeSeries(random, {
+            strokeStyle: 'rgba(0, 255, 0, 0.5)',
+            fillStyle: 'rgba(0, 255, 0, 0.2)',
+            lineWidth: 4
+        });
+
+        var chartCanvas = document.getElementById("sensorChart");
+        chartCanvas.width = window.innerWidth - 20;
+        chartCanvas.height = window.innerHeight;
+
+        chart.streamTo(chartCanvas, 300);
+      }
+    </script>
+</head>
+
+<body onload="createTimeline()">
+
+<canvas id="sensorChart"></canvas>
+
+</body>
+
+</html>

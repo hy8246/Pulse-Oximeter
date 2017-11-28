@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Heart Rate Monitor</string>
+    <string name="username">Username</string>
+    <string name="data">Data</string>
+    <string name="evaluation">Evaluation</string>
+
+</resources>
